@@ -1,0 +1,12 @@
+kind: worker
+tech: ts
+# Workers run as Kubernetes Deployments with NO Service or Ingress.
+# There is no HTTP endpoint, no DNS record, and no health-check path.
+# Scaling is driven by queue depth (e.g., KEDA), not HTTP traffic.
+deploy:
+  port: null
+  healthPath: null
+  dnsPrefix: null
+  resources:
+    requests: { cpu: "100m", memory: "128Mi" }
+    limits: { cpu: "500m", memory: "512Mi" }
